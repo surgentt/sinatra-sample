@@ -1,6 +1,7 @@
 require "sinatra"
 require "sinatra/base"
 require "json"
+require "pry"
 require_relative "../models/user"
 
 class UsersController < Sinatra::Base
@@ -15,8 +16,7 @@ class UsersController < Sinatra::Base
 
   # POST create user
   post "/users" do
-    data = JSON.parse(request.body.read)
-    user = User.new(name: data["name"], email: data["email"])
+    user = User.new(name: params["name"], email: params["email"])
 
     if user.save
       status 201

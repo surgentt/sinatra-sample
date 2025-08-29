@@ -17,13 +17,10 @@ RSpec.describe "Users Endpoint" do
   end
 
   context 'post /users' do
-    let(:payload) { { name: "Ava", email: "ava@example.com" }.to_json }
+    let(:params) { { name: "Ava", email: "ava@example.com" } }
 
     it "returns 201" do
-      post "/users", payload, {
-        "CONTENT_TYPE" => "application/json",
-        "ACCEPT"       => "application/json"
-      }
+      post "/users", params
       expect(last_response.status).to eq(201)
       data = JSON.parse(last_response.body)
       expect(data.slice('name', 'email')).to eq({"name"=>"Ava", "email"=>"ava@example.com"})
