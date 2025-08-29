@@ -18,4 +18,7 @@ gem "json"
 group :test do
   gem 'rspec'
   gem 'rack-test'
+  gem 'factory_bot'
+  gem 'database_cleaner-active_record'
+  gem 'faker'
 end
