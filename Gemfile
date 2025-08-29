@@ -8,4 +8,9 @@ gem "rackup", "~> 2.2"
 gem "puma", "~> 6.6"
 
 gem 'pry'
-gem "pry-byebug" 
+gem "pry-byebug"
+
+gem "sinatra-activerecord"
+gem "pg"       # or "sqlite3"
+gem "rake"
+gem "json"

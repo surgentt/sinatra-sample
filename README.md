@@ -1,4 +1,6 @@
 ```
+  createdb my_sinatra_app_development
+
   # Start APP
-  `be ruby app.rb -p 4567`
+  `be rackup -p 4567`
 ```

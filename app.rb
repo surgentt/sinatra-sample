@@ -1,22 +1,10 @@
-require 'sinatra'
-require 'sinatra/json'
-require 'sinatra/cross_origin'
-require 'pry'
+require "sinatra/base"
+require "sinatra/activerecord"
+require "./config/database"
 
-configure do
-  enable :cross_origin
+# Load controllers
+require_relative "./controllers/users_controller"
+
+class App < Sinatra::Base
+  use UsersController
 end
-
-before do
-  content_type :json
-end
-
-get '/api/hello' do
-  json message: "Hello from Sinatra API!"
-end
-
-post '/api/echo' do
-  "You sent: #{params}"
-end
-
-
