@@ -11,6 +11,11 @@ gem 'pry'
 gem "pry-byebug"
 
 gem "sinatra-activerecord"
-gem "pg"       # or "sqlite3"
+gem "pg"
 gem "rake"
 gem "json"
+
+group :test do
+  gem 'rspec'
+  gem 'rack-test'
+end
