@@ -27,13 +27,12 @@ class UsersController < Sinatra::Base
     end
   end
 
-  # PUT update user
-  put "/users/:id" do
+  # PATCH update user
+  patch "/users/:id" do
     user = User.find_by(id: params[:id])
     halt 404, { error: "User not found" }.to_json unless user
 
-    data = JSON.parse(request.body.read)
-    if user.update(name: data["name"], email: data["email"])
+    if user.update(name: params["name"], email: params["email"])
       user.to_json
     else
       status 422

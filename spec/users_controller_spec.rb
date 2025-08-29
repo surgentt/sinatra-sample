@@ -26,4 +26,18 @@ RSpec.describe "Users Endpoint" do
       expect(data.slice('name', 'email')).to eq({"name"=>"Ava", "email"=>"ava@example.com"})
     end
   end
+
+  context 'patch /users/:id' do
+    let(:user) { create(:user, name: 'Old', email: 'old@example.com') }
+    let(:params) { { name: "Ava", email: "ava@example.com" } }
+
+    before { user }
+
+    it "returns 201" do
+      patch "/users/#{user.id}", params
+      expect(last_response.status).to eq(200)
+      data = JSON.parse(last_response.body)
+      expect(data.slice('name', 'email')).to eq({"name"=>"Ava", "email"=>"ava@example.com"})
+    end
+  end
 end
